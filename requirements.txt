@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+python-multipart
+google-generativeai
+pdf2image
+pyngrok
+
+#To install all of them at once, you would run the command: pip install -r requirements.txt
