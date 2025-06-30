@@ -2,13 +2,14 @@
 
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
 ![Framework](https://img.shields.io/badge/framework-FastAPI-green)
+![Google Colab Code](https://colab.research.google.com/drive/1O9NBn1vfTo8TDDZih0fhSCkJwzOymAFn?usp=sharing)
 
 [cite_start]This project is a Python microservice developed for the Curacel AI/ML Engineer take-home task[cite: 1]. [cite_start]It intelligently processes medical claim documents by extracting structured data from images or PDFs and answering questions about their content[cite: 4].
 
 ## ✨ Features
 
-* [cite_start]**Intelligent Data Extraction**: A `POST /extract` endpoint that accepts a claim document (image/PDF) and returns a structured JSON object with key details[cite: 5, 6].
-* [cite_start]**Question Answering**: A `POST /ask` endpoint that answers natural language questions based on the data extracted from a previously processed document[cite: 8].
+* **Intelligent Data Extraction**: A `POST /extract` endpoint that accepts a claim document (image/PDF) and returns a structured JSON object with key details[cite: 5, 6].
+* **Question Answering**: A `POST /ask` endpoint that answers natural language questions based on the data extracted from a previously processed document[cite: 8].
 * **Confidence Scoring**: An advanced feature that prompts the model to self-evaluate its performance, returning a percentage confidence score for both the data extraction and question-answering tasks.
 
 ---
