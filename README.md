@@ -2,14 +2,13 @@
 
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
 ![Framework](https://img.shields.io/badge/framework-FastAPI-green)
-![Google Colab Code](https://colab.research.google.com/drive/1O9NBn1vfTo8TDDZih0fhSCkJwzOymAFn?usp=sharing)
 
-[cite_start]This project is a Python microservice developed for the Curacel AI/ML Engineer take-home task[cite: 1]. [cite_start]It intelligently processes medical claim documents by extracting structured data from images or PDFs and answering questions about their content[cite: 4].
+This project is a Python microservice developed for the Curacel AI/ML Engineer take-home task. It intelligently processes medical claim documents by extracting structured data from images or PDFs and answering questions about their content.
 
 ## ✨ Features
 
-* **Intelligent Data Extraction**: A `POST /extract` endpoint that accepts a claim document (image/PDF) and returns a structured JSON object with key details[cite: 5, 6].
-* **Question Answering**: A `POST /ask` endpoint that answers natural language questions based on the data extracted from a previously processed document[cite: 8].
+* **Intelligent Data Extraction**: A `POST /extract` endpoint that accepts a claim document (image/PDF) and returns a structured JSON object with key details.
+* **Question Answering**: A `POST /ask` endpoint that answers natural language questions based on the data extracted from a previously processed document.
 * **Confidence Scoring**: An advanced feature that prompts the model to self-evaluate its performance, returning a percentage confidence score for both the data extraction and question-answering tasks.
 
 ---
@@ -23,7 +22,7 @@ The service is built with a clean, maintainable architecture that separates the 
 * **Core Logic (`processor.py`)**: This module contains the multi-step document processing pipeline powered by Google's **Gemini 1.5 Flash** model.
     1.  **Input Handling**: Accepts an uploaded file. If it's a PDF, it's first converted into a series of images.
     2.  **Text Recognition (OCR)**: The vision capabilities of the Gemini model are used to extract all raw text from the document images.
-    3.  [cite_start]**Structured Extraction**: A carefully engineered prompt instructs the model to parse the raw text and populate a predefined JSON schema, turning unstructured data into a reliable format[cite: 2].
+    3.  **Structured Extraction**: A carefully engineered prompt instructs the model to parse the raw text and populate a predefined JSON schema, turning unstructured data into a reliable format.
     4.  **Confidence Assessment**: The same prompt also asks the model to self-evaluate its extraction accuracy, providing a confidence score.
     5.  **Question Answering**: For the `/ask` endpoint, the extracted JSON is provided as context to the model, which is instructed to answer questions based only on that data and to provide a confidence score for its answer.
 
@@ -33,14 +32,16 @@ The service is built with a clean, maintainable architecture that separates the 
 
 During implementation, the following key decisions were made:
 
-* [cite_start]**LLM Choice**: I selected **Google's Gemini 1.5 Flash** model because it is a powerful, multimodal model available under a generous free tier, making it perfect for handling both vision and language processing tasks in a single, efficient tool[cite: 9].
-* [cite_start]**Storage**: As per the guidelines, a simple Python dictionary is used for **in-memory storage** of extracted document data[cite: 10]. This is sufficient for the scope of this task. For a production environment, this would be replaced with a persistent database like Redis (for caching) or PostgreSQL.
+* **LLM Choice**: I selected **Google's Gemini 1.5 Flash** model because it is a powerful, multimodal model available under a generous free tier, making it perfect for handling both vision and language processing tasks in a single, efficient tool.
+* **Storage**: As per the guidelines, a simple Python dictionary is used for **in-memory storage** of extracted document data. This is sufficient for the scope of this task. For a production environment, this would be replaced with a persistent database like Redis (for caching) or PostgreSQL.
 * **Confidence Score Method**: Since the Gemini API does not provide a built-in confidence metric, I implemented this feature by enhancing the prompts. The prompts explicitly ask the model to self-evaluate and return a numerical confidence score. This demonstrates a more advanced use of prompting to add value and insight into the model's performance.
 * **Development Environment**: The project was developed and tested in a cloud-based notebook environment (Google Colab) for ease of setup and GPU access, but the instructions below are for running it on any local machine.
 
 ---
 
 ## 🚀 Getting Started
+
+Reference: Google Colab Code- https://colab.research.google.com/drive/1O9NBn1vfTo8TDDZih0fhSCkJwzOymAFn?usp=sharing
 
 Follow these instructions to run the service on your local machine.
 
